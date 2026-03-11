@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect x="0" y="0" width="800" height="600" fill="#ff9fcb"/>
+  <rect x="80" y="60" width="640" height="480" rx="24" fill="#ffffff" stroke="#ffe4f0" stroke-width="6"/>
+  <circle cx="300" cy="280" r="70" fill="#ffc9e1"/>
+  <rect x="420" y="320" width="200" height="110" rx="16" fill="#d5237b" opacity="0.25"/>
+  <text x="400" y="560" font-size="24" text-anchor="middle" fill="#b41467" font-family="Arial, Helvetica, sans-serif">Premium Care</text>
+</svg>

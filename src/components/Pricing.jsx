@@ -1,3 +1,4 @@
+import React from "react";
 const items = [
   { name: "Haircut", price: "₹300" },
   { name: "Hair Color", price: "₹1500" },
