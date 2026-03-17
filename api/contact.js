@@ -95,6 +95,12 @@ export default async function handler(req, res) {
                       <a href="https://saloon-eight-taupe.vercel.app/" class="button">Visit Our Website</a>
                   </div>
                   <div class="footer">
+                      <p style="margin-bottom: 12px;">
+                          <a href="https://www.instagram.com/" style="color: #f53c91; text-decoration: none; margin: 0 8px;">Instagram</a>
+                          <a href="https://www.facebook.com/" style="color: #f53c91; text-decoration: none; margin: 0 8px;">Facebook</a>
+                          <a href="https://x.com/" style="color: #f53c91; text-decoration: none; margin: 0 8px;">X (Twitter)</a>
+                          <a href="https://www.pinterest.com/" style="color: #f53c91; text-decoration: none; margin: 0 8px;">Pinterest</a>
+                      </p>
                       <p>123 Beauty Avenue, Ramdaspeth, Nagpur</p>
                       <p>Phone: +91 12345 67890</p>
                   </div>
