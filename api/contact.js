@@ -29,24 +29,13 @@ export default async function handler(req, res) {
 
   const receiver = process.env.RECEIVER_EMAIL || process.env.EMAIL_USER;
 
-  const mailOptions = {
-    // IMPORTANT: Gmail SMTP requires 'from' to be the authenticated sender (EMAIL_USER).
-    // Setting 'from' to the visitor's email causes a 530/550 SMTP auth rejection.
-    // We show the visitor name in the display portion for readability.
+  // 1. Email to Salon (Enquiry Notification)
+  const salonMailOptions = {
     from: `"Glow Beauty Salon Website" <${process.env.EMAIL_USER}>`,
-    replyTo: `"${name}" <${email}>`,  // Replying goes straight to the visitor
+    replyTo: `"${name}" <${email}>`,
     to: receiver,
     subject: `New Enquiry: ${service || "General Inquiry"} — from ${name}`,
-    text: `New appointment enquiry from your website.
-
-Name:    ${name}
-Email:   ${email}
-Phone:   ${phone || "N/A"}
-Service: ${service || "N/A"}
-
-Message:
-${message}
-`,
+    text: `New appointment enquiry from your website.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"}\nService: ${service || "N/A"}\n\nMessage:\n${message}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #ffc9e1; border-radius: 12px; overflow: hidden;">
         <div style="background: linear-gradient(135deg, #f53c91, #b41467); padding: 24px 32px;">
@@ -71,13 +60,62 @@ ${message}
     `,
   };
 
+  // 2. Email to Visitor (Auto-Confirmation)
+  const visitorMailOptions = {
+    from: `"Glow Beauty Salon" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: `We've received your enquiry, ${name.split(" ")[0]}! ✨`,
+    html: `
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <style>
+              body { margin: 0; padding: 0; background-color: #fceef5; font-family: sans-serif; }
+              .wrapper { width: 100%; background-color: #fceef5; padding: 20px 0; }
+              .content { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+              .header { background: linear-gradient(135deg, #f53c91, #b41467); padding: 30px 20px; text-align: center; color: white; }
+              .body { padding: 30px 40px; text-align: center; line-height: 1.6; color: #444; }
+              .button { display: inline-block; background-color: #f53c91; color: white; padding: 14px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; }
+              .footer { padding: 20px; background-color: #fff0f6; text-align: center; font-size: 12px; color: #888; }
+          </style>
+      </head>
+      <body>
+          <div class="wrapper">
+              <div class="content">
+                  <div class="header">
+                      <h1 style="margin:0; font-size: 24px;">Glow Beauty Salon</h1>
+                      <p style="margin:5px 0 0; opacity: 0.8; font-size: 14px;">Thank you for reaching out!</p>
+                  </div>
+                  <div class="body">
+                      <h2 style="color: #b41467;">Hi ${name.split(" ")[0]},</h2>
+                      <p>We've received your enquiry for <strong>${service || "our beauty services"}</strong>. Our team is already looking into it!</p>
+                      <p>We will get back to you within 2 hours to confirm your preferred time and slot.</p>
+                      <hr style="border: none; border-top: 1px solid #ffe4f0; margin: 25px 0;" />
+                      <p style="font-size: 14px; color: #999;">"Your beauty is our passion. We can't wait to see you shine!"</p>
+                      <a href="https://saloon-eight-taupe.vercel.app/" class="button">Visit Our Website</a>
+                  </div>
+                  <div class="footer">
+                      <p>123 Beauty Avenue, Ramdaspeth, Nagpur</p>
+                      <p>Phone: +91 12345 67890</p>
+                  </div>
+              </div>
+          </div>
+      </body>
+      </html>
+    `,
+  };
+
   try {
-    await transporter.sendMail(mailOptions);
+    // Send both emails simultaneously
+    await Promise.all([
+      transporter.sendMail(salonMailOptions),
+      transporter.sendMail(visitorMailOptions)
+    ]);
     return res.status(200).json({ message: "Email sent successfully!" });
   } catch (error) {
     console.error("Nodemailer Error:", error.code, error.message);
     return res.status(500).json({
-      message: "Failed to send email. Please call us directly at +91 12345 67890.",
+      message: "Failed to send email. Please call us directly.",
       error: error.message,
     });
   }
