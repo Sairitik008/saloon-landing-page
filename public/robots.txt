@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saloon-eight-taupe.vercel.app/sitemap.xml

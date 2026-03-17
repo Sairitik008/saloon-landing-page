@@ -1,32 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans antialiased text-gray-800 bg-white;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+/* ─── Layout ──────────────────────────────────────────────── */
 .container {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-.btn-primary {
-  @apply inline-block rounded-full bg-brand-600 text-white px-6 py-3 font-medium shadow hover:bg-brand-700 transition;
+.section-alt {
+  background: linear-gradient(135deg, #fff0f6 0%, #ffffff 60%, #fff5fb 100%);
 }
 
-.card {
-  @apply bg-white/80 backdrop-blur border border-pink-100 rounded-xl p-6 shadow-sm hover:shadow-md transition;
+/* ─── Typography ──────────────────────────────────────────── */
+.section-label {
+  @apply inline-block text-xs font-semibold uppercase tracking-widest text-brand-600 bg-brand-50 border border-brand-200 rounded-full px-4 py-1 mb-4;
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-bold text-gray-900;
+  @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight;
+}
+
+.section-title-white {
+  @apply font-display text-3xl md:text-4xl font-bold text-white leading-tight;
 }
 
 .section-subtitle {
-  @apply mt-2 text-gray-600;
+  @apply mt-4 text-lg text-gray-500 max-w-2xl leading-relaxed;
 }
+
+.gradient-text {
+  background: linear-gradient(135deg, #f53c91 0%, #b41467 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-white shadow-brand-md transition-all duration-300;
+  background: linear-gradient(135deg, #f53c91 0%, #b41467 100%);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(213, 35, 123, 0.4);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-brand-700 bg-white border-2 border-brand-300 shadow-sm transition-all duration-300;
+}
+.btn-secondary:hover {
+  @apply bg-brand-50 border-brand-500;
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-white border-2 border-white/50 backdrop-blur-sm transition-all duration-300;
+}
+.btn-outline-white:hover {
+  @apply bg-white/10 border-white;
+}
+
+/* ─── Cards ───────────────────────────────────────────────── */
+.card {
+  @apply bg-white border border-pink-100 rounded-2xl p-6 shadow-sm transition-all duration-300;
+}
+.card:hover {
+  @apply shadow-brand-md border-brand-200;
+  transform: translateY(-4px);
+}
+
+.card-glass {
+  @apply bg-white/70 backdrop-blur-md border border-pink-100 rounded-2xl p-6 shadow-sm transition-all duration-300;
+}
+.card-glass:hover {
+  @apply shadow-brand-md;
+  transform: translateY(-4px);
+}
+
+/* ─── Form Inputs ─────────────────────────────────────────── */
+.form-input {
+  @apply w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-800 placeholder-gray-400 outline-none transition-all duration-200;
+}
+.form-input:focus {
+  @apply border-brand-400 bg-white ring-4 ring-brand-100;
+}
+
+/* ─── Badge ───────────────────────────────────────────────── */
+.badge-trust {
+  @apply inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm;
+}
+
+/* ─── Divider ─────────────────────────────────────────────── */
+.section-divider {
+  @apply flex items-center gap-3 my-3;
+}
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  @apply flex-1 h-px bg-brand-200;
+}
+
+/* ─── Gallery ─────────────────────────────────────────────── */
+.gallery-img-wrapper {
+  @apply relative overflow-hidden rounded-2xl border border-pink-100 bg-gray-100 cursor-pointer;
+  aspect-ratio: 4 / 3;
+}
+.gallery-img-wrapper img {
+  @apply absolute inset-0 w-full h-full object-cover transition-transform duration-500;
+}
+.gallery-img-wrapper:hover img {
+  transform: scale(1.07);
+}
+.gallery-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 flex items-end p-4;
+}
+.gallery-img-wrapper:hover .gallery-overlay {
+  @apply opacity-100;
+}
+
+/* ─── WhatsApp Float ──────────────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+/* ─── Animations ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(213, 35, 123, 0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(213, 35, 123, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(213, 35, 123, 0); }
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #fff0f6; }
+::-webkit-scrollbar-thumb { background: #f53c91; border-radius: 3px; }

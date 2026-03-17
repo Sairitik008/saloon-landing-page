@@ -35,6 +35,7 @@ Modern, responsive salon landing page built with React and Vite, styled using Ta
 - PostCSS + Autoprefixer
 
 ## Deployment (Vercel)
+- **Detailed Terminal Guide**: See [VERCEL_GUIDE.md](./VERCEL_GUIDE.md) for step-by-step terminal instructions.
 - Import the repository into Vercel
 - Build command: `npm run build`
 - Output directory: `dist`
