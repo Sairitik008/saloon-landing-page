@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero.jpg"
+          src="https://images.pexels.com/photos/3993318/pexels-photo-3993318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Glow Beauty Salon luxuriant spa treatment"
           className="w-full h-full object-cover"
           loading="eager"
