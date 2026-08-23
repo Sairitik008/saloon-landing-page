@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 const items = [
-  { icon: "✂️", name: "Haircut & Styling",      price: "Starting ₹500",   popular: false },
-  { icon: "🎨", name: "Hair Coloring",           price: "Starting ₹2,000", popular: false },
-  { icon: "🌿", name: "Skincare Facials",        price: "Starting ₹1,200", popular: false },
-  { icon: "👰", name: "Bridal Makeup Package",   price: "Starting ₹10,000",popular: true  },
+  { icon: "✂️", name: "Haircut & Styling", price: "Starting ₹500", popular: false },
+  { icon: "🎨", name: "Hair Coloring", price: "Starting ₹2,000", popular: false },
+  { icon: "🌿", name: "Skincare Facials", price: "Starting ₹1,200", popular: false },
+  { icon: "👰", name: "Bridal Makeup Package", price: "Starting ₹10,000", popular: true },
 ];
 
 const faqs = [
@@ -29,23 +29,22 @@ const faqs = [
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border border-pink-100 rounded-2xl overflow-hidden bg-white transition-shadow duration-300 hover:shadow-brand-sm">
+    <div className="border border-brand-500/20 bg-brand-800 transition-shadow duration-300">
       <button
-        className="w-full flex items-center justify-between text-left p-5 font-semibold text-gray-900 hover:text-brand-700 transition-colors"
+        className="w-full flex items-center justify-between text-left p-6 font-display text-lg text-brand-100 hover:text-brand-500 transition-colors"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
         <span>{q}</span>
         <span
-          className={`ml-4 flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-brand-600 border border-brand-200 transition-transform duration-300 ${
-            open ? "rotate-45 bg-brand-50" : "bg-white"
-          }`}
+          className={`ml-4 flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-brand-500 border border-brand-500/30 transition-transform duration-300 ${open ? "rotate-45 bg-brand-500/10" : "bg-transparent"
+            }`}
         >
           +
         </span>
       </button>
       {open && (
-        <div className="px-5 pb-5 text-gray-500 text-sm leading-relaxed border-t border-pink-50 pt-3">
+        <div className="px-6 pb-6 text-brand-100/60 text-sm leading-relaxed border-t border-brand-500/10 pt-4">
           {a}
         </div>
       )}
@@ -55,59 +54,55 @@ function FAQItem({ q, a }) {
 
 export default function Pricing() {
   return (
-    <div className="container">
-      <div className="text-center max-w-2xl mx-auto">
-        <span className="section-label">💰 Transparent Pricing</span>
-        <h2 className="section-title">Our Pricing & FAQs</h2>
-        <p className="section-subtitle mx-auto">
-          Honest, competitive pricing for our most popular services — no hidden
-          charges. Custom packages available on request.
-        </p>
-      </div>
+    <section className="bg-brand-900 py-24" id="pricing">
+      <div className="container">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="font-display text-4xl text-white tracking-widest uppercase">Pricing & Policies</h2>
+          <div className="w-16 h-[1px] bg-brand-500 mx-auto mt-6"></div>
+          <p className="mt-6 text-brand-100/60 font-light max-w-md mx-auto text-sm leading-relaxed">
+            Honest, competitive pricing for our signature collections — no hidden charges.
+          </p>
+        </div>
 
-      <div className="mt-12 grid md:grid-cols-2 gap-10">
-        {/* Price Cards */}
-        <div>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {items.map((it) => (
-              <div
-                key={it.name}
-                className={`relative card flex flex-col gap-3 ${
-                  it.popular ? "border-brand-300 shadow-brand-sm" : ""
-                }`}
-              >
-                {it.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold text-white bg-brand-600 rounded-full px-3 py-0.5 whitespace-nowrap shadow">
-                    ⭐ Most Popular
-                  </span>
-                )}
+        <div className="mt-12 grid md:grid-cols-2 gap-10 lg:gap-16">
+          {/* Price Cards */}
+          <div>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {items.map((it) => (
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
-                  style={{ background: "linear-gradient(135deg, #fff0f6 0%, #ffe4f0 100%)", border: "1px solid #ffc9e1" }}
+                  key={it.name}
+                  className={`relative p-6 bg-brand-800 border flex flex-col gap-4 transition-all duration-300 ${it.popular ? "border-brand-500 shadow-brand-sm" : "border-brand-500/20 hover:border-brand-500/50"
+                    }`}
                 >
-                  {it.icon}
+                  {it.popular && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[0.65rem] tracking-widest font-bold text-brand-900 bg-brand-500 uppercase px-3 py-1 shadow">
+                      Signature
+                    </span>
+                  )}
+                  <div className="text-2xl text-brand-500">
+                    {it.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl text-white tracking-wide">{it.name}</h3>
+                    <p className="mt-2 text-sm font-semibold text-brand-500 tracking-widest uppercase">{it.price}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">{it.name}</h3>
-                  <p className="mt-1 text-lg font-bold gradient-text">{it.price}</p>
-                </div>
-              </div>
+              ))}
+            </div>
+            <p className="mt-6 text-[0.7rem] text-brand-100/40 uppercase tracking-widest">
+              * Prices may vary based on exact service requirements. GST applicable as per government norms. Custom packages available.
+            </p>
+          </div>
+
+          {/* FAQ Accordion */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold text-brand-500 mb-6 uppercase tracking-widest">Frequently Asked Questions</h3>
+            {faqs.map((f, i) => (
+              <FAQItem key={i} q={f.q} a={f.a} />
             ))}
           </div>
-          <p className="mt-5 text-xs text-gray-400">
-            * Prices may vary based on hair length and complexity. GST applicable as per government norms. Custom packages available — contact us for a quote.
-          </p>
-          </div>
-        
-
-        {/* FAQ Accordion */}
-        <div className="space-y-3">
-          <h3 className="text-xl font-bold text-gray-900 mb-5">Frequently Asked Questions</h3>
-          {faqs.map((f, i) => (
-            <FAQItem key={i} q={f.q} a={f.a} />
-          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

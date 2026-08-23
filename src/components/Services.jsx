@@ -1,80 +1,103 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const services = [
   {
+    icon: "✨",
+    title: "Bespoke Facials",
+    desc: "Hydrating, lifting, radiant rituals",
+    link: "Learn More"
+  },
+  {
+    icon: "💆‍♀️",
+    title: "Signature Massage",
+    desc: "Relaxing, deep tissue, aromatherapy",
+    link: "Book Now"
+  },
+  {
     icon: "✂️",
-    title: "Hair Styling",
-    desc: "Get a fresh, modern look with our expert hair stylists. From precision cuts and blowouts to elegant updos for special occasions — we tailor every style to you.",
-    tag: "Most Popular",
-  },
-  {
-    icon: "👰",
-    title: "Bridal Makeup",
-    desc: "Look absolutely stunning on your wedding day. Our professional bridal makeup artists create flawless, long-lasting looks crafted to match your unique vision.",
-    tag: null,
-  },
-  {
-    icon: "🌿",
-    title: "Skincare Treatments",
-    desc: "Rejuvenate and glow with our customized facials and advanced skincare treatments — targeting acne, aging, pigmentation, and hydration for healthier skin.",
-    tag: null,
+    title: "Hair Artistry",
+    desc: "Cut, style, color treatments",
+    link: "Book Now"
   },
   {
     icon: "💅",
-    title: "Manicures & Pedicures",
-    desc: "Treat yourself to a relaxing nail session. We offer nail shaping, cuticle care, gel polish, nail art, and premium products for a salon-fresh finish.",
-    tag: null,
+    title: "Luxe Manicure",
+    desc: "Hand & nail rejuvenation",
+    link: "Book Now"
   },
   {
-    icon: "🎨",
-    title: "Hair Coloring",
-    desc: "From bold ombre and balayage to subtle highlights and full color — our color specialists will help you achieve a shade that perfectly complements you.",
-    tag: null,
-  },
-  {
-    icon: "🧘",
-    title: "Massage Therapy",
-    desc: "De-stress and unwind with our professional massage therapy. Our skilled therapists ease muscle tension, improve circulation, and restore your inner balance.",
-    tag: null,
-  },
+    icon: "👰",
+    title: "Bridal Styling",
+    desc: "Flawless long-lasting event makeup",
+    link: "Consultation"
+  }
 ];
 
 export default function Services() {
-  return (
-    <div className="container">
-      <div className="text-center max-w-2xl mx-auto">
-        <span className="section-label">What We Offer</span>
-        {/* SEO-Optimized h2 */}
-        <h2 className="section-title">Our Premium Salon Services in Nagpur</h2>
-        <p className="section-subtitle mx-auto">
-          Discover our wide range of beauty treatments tailored to bring out
-          your natural beauty and leave you feeling your absolute best.
-        </p>
-      </div>
+  const scrollRef = useRef(null);
 
-      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((s) => (
-          <div key={s.title} className="card relative group">
-            {s.tag && (
-              <span className="absolute top-4 right-4 text-xs font-semibold text-brand-700 bg-brand-50 border border-brand-200 rounded-full px-2.5 py-0.5">
-                {s.tag}
-              </span>
-            )}
-            <div
-              className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-brand-sm"
-              style={{ background: "linear-gradient(135deg, #fff0f6 0%, #ffe4f0 100%)", border: "1px solid #ffc9e1" }}
-            >
-              {s.icon}
-            </div>
-            <h3 className="text-xl font-bold text-gray-900">{s.title}</h3>
-            <p className="mt-2 text-gray-500 leading-relaxed text-sm">{s.desc}</p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-50 border border-green-200 rounded-full px-2.5 py-1 w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
-              Available Now
-            </span>
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === "left" ? scrollLeft - clientWidth / 2 : scrollLeft + clientWidth / 2;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="bg-brand-800 py-24 border-t border-brand-500/20" id="services">
+      <div className="container overflow-hidden relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-brand-500/30 pb-4">
+          <div>
+            <h2 className="font-display text-4xl text-white">EXPLORE OUR SERVICES</h2>
           </div>
-        ))}
+          <div className="flex gap-4 mt-6 md:mt-0">
+            <button
+              onClick={() => scroll("left")}
+              className="w-10 h-10 border border-brand-500/50 flex items-center justify-center text-brand-500 hover:bg-brand-500 hover:text-brand-900 transition-colors"
+              aria-label="Scroll Left"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-10 h-10 border border-brand-500/50 flex items-center justify-center text-brand-500 hover:bg-brand-500 hover:text-brand-900 transition-colors"
+              aria-label="Scroll Right"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {services.map((s, i) => (
+            <div
+              key={i}
+              className="bg-brand-900 min-w-[280px] md:min-w-[320px] snap-start border border-brand-500/10 hover:border-brand-500/40 transition-all p-6 flex flex-col cursor-pointer"
+            >
+              <div className="text-3xl mb-6 text-brand-500">{s.icon}</div>
+              <h3 className="font-display text-xl text-brand-100 uppercase tracking-widest">{s.title}</h3>
+              <p className="text-brand-100/60 mt-3 text-sm flex-1">{s.desc}</p>
+              <div className="mt-8">
+                <a href="#contact" className="text-xs text-brand-500 border-b border-brand-500 pb-1 uppercase tracking-wider font-bold">
+                  {s.link}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
-    </div>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+      `}} />
+    </section>
   );
 }

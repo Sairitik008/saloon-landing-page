@@ -1,97 +1,46 @@
 import React from "react";
-
-const stats = [
-  { value: "500+", label: "Happy Clients" },
-  { value: "10+",  label: "Years Experience" },
-  { value: "50+",  label: "Beauty Services" },
-  { value: "4.9★", label: "Google Rating" },
-];
+import BookingWidget from "./BookingWidget";
 
 export default function Hero() {
   return (
-    <div className="container">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative min-h-screen flex flex-col justify-center pt-24 pb-16" id="home">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/hero.jpg"
+          alt="Glow Beauty Salon luxuriant spa treatment"
+          className="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+        {/* Soft edge fade for luxury effect */}
+        <div className="absolute inset-0 bg-brand-900/40 via-brand-900/60 to-brand-900 z-10 bg-gradient-to-b" />
+      </div>
+
+      <div className="container relative z-20 flex flex-col lg:flex-row lg:items-center gap-12 mt-10">
+
         {/* Text Column */}
-        <div className="order-2 md:order-1">
-          <span className="section-label">✨ Premier Beauty Salon in Nagpur</span>
-
-          {/* SEO H1: captures "best beauty salon in Nagpur" search intent */}
-          <h1 className="section-title mt-2">
-            Nagpur's Most{" "}
-            <span className="gradient-text">Trusted Beauty</span>{" "}
-            Salon Experience
-          </h1>
-
-          <p className="section-subtitle">
-            From expert hair styling and bridal makeup to rejuvenating skincare
-            treatments — Glow Beauty Salon is where you come to look and feel
-            absolutely stunning.
+        <div className="flex-1 text-center lg:text-center shrink-0 w-full mb-10 max-w-3xl mx-auto">
+          <p className="inline-block text-xs uppercase tracking-[0.25em] text-brand-300 font-medium mb-6">
+            Indulge In Refined Beauty
           </p>
 
-          {/* CTA Pair */}
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#contact" className="btn-primary">
-              Book Appointment
-            </a>
-            <a href="#services" className="btn-secondary">
-              Explore Services
-            </a>
-          </div>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.1] mb-6">
+            GLOW BEAUTY
+          </h1>
 
-          {/* Trust Badges */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            <span className="badge-trust">✅ Certified Stylists</span>
-            <span className="badge-trust">🏆 Award-Winning Salon</span>
-            <span className="badge-trust">💯 100% Satisfaction</span>
+          <p className="text-lg md:text-xl text-brand-100/90 font-light max-w-2xl leading-relaxed mb-10 mx-auto">
+            Curated rituals, bespoke treatments, and effortless elegance. Elevate your self-care journey in Nagpur's premium beauty sanctuary.
+          </p>
+
+          <div className="flex justify-center mt-6">
+            <a href="#services" className="btn-secondary px-10 py-4 border-brand-500/50">
+              RESERVE YOUR APPOINTMENT
+            </a>
           </div>
         </div>
 
-        {/* Image Column */}
-        <div className="order-1 md:order-2 relative">
-          <div className="relative rounded-3xl overflow-hidden border border-pink-200 shadow-brand-lg">
-            <img
-              src="https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Professional beauty salon hair styling service in Nagpur at Glow Beauty Salon"
-              className="w-full h-[420px] object-cover"
-              loading="eager"
-              fetchpriority="high"
-            />
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-900/20 to-transparent pointer-events-none" />
-          </div>
-
-          {/* Floating Trust Badge */}
-          <div
-            className="absolute -bottom-5 -left-4 bg-white border border-pink-200 rounded-2xl px-5 py-3 shadow-brand-md"
-            style={{ animation: "float 3s ease-in-out infinite" }}
-          >
-            <p className="text-xs font-medium text-gray-500">Trusted by</p>
-            <p className="text-xl font-bold text-brand-700">500+ Clients</p>
-          </div>
-
-          {/* Floating Rating Badge */}
-          <div className="absolute -top-4 -right-4 bg-white border border-pink-200 rounded-2xl px-4 py-2.5 shadow-brand-md">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-400 text-lg">⭐</span>
-              <span className="font-bold text-gray-900">4.9</span>
-            </div>
-            <p className="text-xs text-gray-500 mt-0.5">Google Review</p>
-          </div>
-        </div>
       </div>
-
-      {/* Stats Row */}
-      <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {stats.map((s) => (
-          <div
-            key={s.label}
-            className="text-center p-5 rounded-2xl bg-white border border-pink-100 shadow-sm hover:shadow-brand-sm hover:border-brand-200 transition-all duration-300"
-          >
-            <p className="text-3xl font-bold gradient-text">{s.value}</p>
-            <p className="mt-1 text-sm text-gray-500 font-medium">{s.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    </section>
   );
 }
