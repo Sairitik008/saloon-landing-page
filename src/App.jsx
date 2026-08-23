@@ -39,7 +39,7 @@ export default function App() {
               <p className="text-brand-100/60 font-light text-sm max-w-sm mx-auto">Witness the visible elevation in radiance and confidence.</p>
             </div>
             <div className="max-w-4xl mx-auto">
-              <BeforeAfterSlider beforeImage="/images/before.JPG" afterImage="/images/after.JPG" />
+              <BeforeAfterSlider beforeImage="/images/before.JPG" afterImage="/images/after_upscayl_4x.jpg" />
             </div>
           </div>
         </section>

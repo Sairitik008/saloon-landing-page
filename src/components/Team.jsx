@@ -2,9 +2,9 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const team = [
-    { name: "Aisha", role: "Master Stylist", img: "/images/team-1.JPG" },
-    { name: "Priya", role: "Bridal Makeup Artist", img: "/images/team-2.JPG" },
-    { name: "Meera", role: "Aesthetician", img: "/images/team-3.JPG" },
+    { name: "Aisha", role: "Master Stylist", img: "/images/team-1_upscayl_4x.jpg" },
+    { name: "Priya", role: "Bridal Makeup Artist", img: "/images/team-2_upscayl_4x.jpg" },
+    { name: "Meera", role: "Aesthetician", img: "/images/team-3_upscayl_4x.jpg" },
 ];
 
 export default function Team() {

@@ -1,12 +1,12 @@
 import React from "react";
 
 const images = [
-  { src: "/images/gallery-1.JPG", alt: "Hair Styling", label: "Hair Styling" },
-  { src: "/images/gallery-2.JPG", alt: "Bridal Makeup", label: "Bridal Makeup" },
+  { src: "/images/gallery-1_upscayl_4x.jpg", alt: "Hair Styling", label: "Hair Styling" },
+  { src: "/images/gallery-2_upscayl_4x.jpg", alt: "Bridal Makeup", label: "Bridal Makeup" },
   { src: "/images/gallery-3.JPG", alt: "Skincare Facial", label: "Skincare Facial" },
-  { src: "/images/gallery-4.JPG", alt: "Nail Art", label: "Nail Art" },
-  { src: "/images/gallery-5.JPG", alt: "Hair Coloring", label: "Hair Coloring" },
-  { src: "/images/gallery-6.JPG", alt: "Spa & Massage", label: "Spa & Massage" },
+  { src: "/images/gallery-4_upscayl_4x.jpg", alt: "Nail Art", label: "Nail Art" },
+  { src: "/images/gallery-5_upscayl_4x.jpg", alt: "Hair Coloring", label: "Hair Coloring" },
+  { src: "/images/gallery-6_upscayl_4x.jpg", alt: "Spa & Massage", label: "Spa & Massage" },
 ];
 
 export default function Gallery() {
