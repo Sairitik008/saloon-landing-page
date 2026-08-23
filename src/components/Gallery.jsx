@@ -1,12 +1,12 @@
 import React from "react";
 
 const images = [
-  { src: "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Hair Styling", label: "Hair Styling" },
-  { src: "https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Bridal Makeup", label: "Bridal Makeup" },
-  { src: "https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Skincare Facial", label: "Skincare Facial" },
-  { src: "https://images.pexels.com/photos/939836/pexels-photo-939836.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Nail Art", label: "Nail Art" },
-  { src: "https://images.pexels.com/photos/3738358/pexels-photo-3738358.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Hair Coloring", label: "Hair Coloring" },
-  { src: "https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Spa & Massage", label: "Spa & Massage" },
+  { src: "/images/gallery-1.JPG", alt: "Hair Styling", label: "Hair Styling" },
+  { src: "/images/gallery-2.JPG", alt: "Bridal Makeup", label: "Bridal Makeup" },
+  { src: "/images/gallery-3.JPG", alt: "Skincare Facial", label: "Skincare Facial" },
+  { src: "/images/gallery-4.JPG", alt: "Nail Art", label: "Nail Art" },
+  { src: "/images/gallery-5.JPG", alt: "Hair Coloring", label: "Hair Coloring" },
+  { src: "/images/gallery-6.JPG", alt: "Spa & Massage", label: "Spa & Massage" },
 ];
 
 export default function Gallery() {

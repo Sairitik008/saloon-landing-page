@@ -22,8 +22,8 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? "bg-brand-900/95 backdrop-blur-md shadow-md border-b border-brand-500/20"
-          : "bg-brand-900/90 backdrop-blur-md border-b border-brand-500/10"
+        ? "bg-brand-900/95 backdrop-blur-md shadow-md border-b border-brand-500/20"
+        : "bg-brand-900/90 backdrop-blur-md border-b border-brand-500/10"
         }`}
     >
       <div className="container flex items-center justify-between py-5">
@@ -40,7 +40,7 @@ export default function Navbar() {
             <a
               key={l.id}
               href={`#${l.id}`}
-              className="text-[0.65rem] md:text-xs uppercase tracking-[0.15em] font-medium text-brand-100 hover:text-brand-500 transition-colors"
+              className="nav-link"
             >
               {l.label}
             </a>

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Scissors, Palette, Sparkles, Crown } from "lucide-react";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const items = [
-  { icon: "✂️", name: "Haircut & Styling", price: "Starting ₹500", popular: false },
-  { icon: "🎨", name: "Hair Coloring", price: "Starting ₹2,000", popular: false },
-  { icon: "🌿", name: "Skincare Facials", price: "Starting ₹1,200", popular: false },
-  { icon: "👰", name: "Bridal Makeup Package", price: "Starting ₹10,000", popular: true },
+  { icon: <Scissors strokeWidth={1} size={28} className="text-brand-500" />, name: "Haircut & Styling", price: "Starting ₹500", popular: false },
+  { icon: <Palette strokeWidth={1} size={28} className="text-blush-500" />, name: "Hair Coloring", price: "Starting ₹2,000", popular: false },
+  { icon: <Sparkles strokeWidth={1} size={28} className="text-brand-500" />, name: "Skincare Facials", price: "Starting ₹1,200", popular: false },
+  { icon: <Crown strokeWidth={1} size={28} className="text-blush-500" />, name: "Bridal Packages", price: "Starting ₹10,000", popular: true },
 ];
 
 const faqs = [
@@ -53,9 +55,11 @@ function FAQItem({ q, a }) {
 }
 
 export default function Pricing() {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
-    <section className="bg-brand-900 py-24" id="pricing">
-      <div className="container">
+    <section className="bg-brand-900 py-24" id="pricing" ref={ref}>
+      <div className={`container transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}>
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-display text-4xl text-white tracking-widest uppercase">Pricing & Policies</h2>
           <div className="w-16 h-[1px] bg-brand-500 mx-auto mt-6"></div>
@@ -71,15 +75,15 @@ export default function Pricing() {
               {items.map((it) => (
                 <div
                   key={it.name}
-                  className={`relative p-6 bg-brand-800 border flex flex-col gap-4 transition-all duration-300 ${it.popular ? "border-brand-500 shadow-brand-sm" : "border-brand-500/20 hover:border-brand-500/50"
+                  className={`relative p-6 bg-brand-800 border flex flex-col gap-4 transition-all duration-300 ${it.popular ? "border-brand-500 shadow-brand-sm" : "border-brand-500/20 hover:border-blush-500/50 hover:-translate-y-1 hover:shadow-[0_4px_30px_rgba(232,180,184,0.1)]"
                     }`}
                 >
                   {it.popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[0.65rem] tracking-widest font-bold text-brand-900 bg-brand-500 uppercase px-3 py-1 shadow">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[0.65rem] tracking-widest font-bold text-brand-900 bg-blush-500 uppercase px-4 py-1 shadow-md">
                       Signature
                     </span>
                   )}
-                  <div className="text-2xl text-brand-500">
+                  <div className="mb-2">
                     {it.icon}
                   </div>
                   <div>
